@@ -2,22 +2,22 @@
 
 ## This tool is designed to make it easier for students to view and manage their class schedules by extracting data from an Excel sheet and displaying it in a user-friendly manner. With this project, students can quickly see their timetables and save their classes for easy access.
 
-![GitHub Repo stars](https://img.shields.io/github/stars/utkarsh-1905/time-table?style=social)
-![GitHub issues](https://img.shields.io/github/issues/utkarsh-1905/time-table)
-![GitHub forks](https://img.shields.io/github/forks/utkarsh-1905/time-table?style=social)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/utkarsh-1905/time-table)
-![GitHub repo size](https://img.shields.io/github/repo-size/utkarsh-1905/time-table)
-![GitHub last commit](https://img.shields.io/github/last-commit/utkarsh-1905/time-table)
-![GitHub License](https://img.shields.io/github/license/utkarsh-1905/time-table)
+![GitHub Repo stars](https://img.shields.io/github/stars/MicrosoftStudentChapter/time-table?style=social)
+![GitHub issues](https://img.shields.io/github/issues/MicrosoftStudentChapter/time-table)
+![GitHub forks](https://img.shields.io/github/forks/MicrosoftStudentChapter/time-table?style=social)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/MicrosoftStudentChapter/time-table)
+![GitHub repo size](https://img.shields.io/github/repo-size/MicrosoftStudentChapter/time-table)
+![GitHub last commit](https://img.shields.io/github/last-commit/MicrosoftStudentChapter/time-table)
+![GitHub License](https://img.shields.io/github/license/MicrosoftStudentChapter/time-table)
 
 ### Collaborators
 
-<!-- readme: utkarsh-1905,nimishmedatwal,dgbkn,SmartKapila,contributors -start -->
+<!-- readme: MicrosoftStudentChapter,nimishmedatwal,dgbkn,SmartKapila,contributors -start -->
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/utkarsh-1905">
-            <img src="https://avatars.githubusercontent.com/u/83540694?v=4" width="100;" alt="utkarsh-1905"/>
+        <a href="https://github.com/MicrosoftStudentChapter">
+            <img src="https://avatars.githubusercontent.com/u/83540694?v=4" width="100;" alt="MicrosoftStudentChapter"/>
             <br />
             <sub><b>Utkarsh Tripathi</b></sub>
         </a>
@@ -51,7 +51,7 @@
         </a>
     </td></tr>
 </table>
-<!-- readme: utkarsh-1905,nimishmedatwal,dgbkn,contributors -end -->
+<!-- readme: MicrosoftStudentChapter,nimishmedatwal,dgbkn,contributors -end -->
 
 ## Table of Contents
 
@@ -89,7 +89,7 @@ Before you start, make sure you have the following prerequisites installed on yo
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/utkarsh-1905/time-table`
+1. Clone the repository: `git clone https://github.com/MicrosoftStudentChapter/time-table`
 2. Build the project: ` go build`
 3. Run the project: `go run main.go`
 
@@ -130,4 +130,4 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 ---
 
-Note: Post any discrepency about the timetable [here](https://github.com/utkarsh-1905/time-table/discussions/12).
+Note: Post any discrepency about the timetable [here](https://github.com/MicrosoftStudentChapter/time-table/discussions/12).

@@ -14,9 +14,9 @@ LABEL traefik.port=80
 LABEL traefik.http.routers.tt.rule="Host(`timetable.mlsctiet.com`)"
 LABEL traefik.http.routers.tt.tls=true
 LABEL traefik.http.routers.tt.tls.certresolver="lets-encrypt"
-LABEL org.opencontainers.image.source="https://github.com/utkarsh-1905/time-table"
+LABEL org.opencontainers.image.source="https://github.com/MicrosoftStudentChapter/time-table"
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD [ "./main.exe" ]
 
@@ -26,5 +26,5 @@ CMD [ "./main.exe" ]
 # COPY --from=build /app/data.json ./
 # COPY --from=build /app/timetable.xlsx ./
 # # if deployed on personal server
-# EXPOSE 3000
+# EXPOSE 5000
 # CMD [ "./main.exe" ]

@@ -12,7 +12,7 @@ import (
 
 	"log"
 
-	"github.com/utkarsh-1905/thapar-time-table/utils"
+	"github.com/MicrosoftStudentChapter/time-table/utils"
 )
 
 func init() {
@@ -105,6 +105,6 @@ func main() {
 	fs := http.FileServer(http.Dir("assets/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	fmt.Println("Server Running at http://localhost:3000")
-	utils.HandleError(http.ListenAndServe(":3000", nil))
+	fmt.Println("Server Running at http://localhost:5000")
+	utils.HandleError(http.ListenAndServe(":5000", nil))
 }

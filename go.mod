@@ -1,4 +1,4 @@
-module github.com/utkarsh-1905/thapar-time-table
+module github.com/MicrosoftStudentChapter/time-table
 
 go 1.20
 
