@@ -1,18 +1,14 @@
-version: "3"
-
 services:
   time-table:
+    ports:
+      - "5000:5000"
     build:
       context: .
       dockerfile: Dockerfile
     networks:
       - bridge
-      - web
     restart: always
 
 networks:
   bridge:
     driver: bridge
-  web:
-    name: web
-    external: true
