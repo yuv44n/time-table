@@ -68,6 +68,11 @@ type Regexs struct {
 }
 
 func GetTableData(sheet string, class int, f *excelize.File) [][]Data {
+	// Validate column number before proceeding
+	if class < 1 || class > 16384 {
+		panic(fmt.Sprintf("Invalid column number: %d. Column number must be between 1 and 16384", class))
+	}
+
 	// regexs
 	lecture, _ := regexp.Compile(`^[A-Z]{3}[0-9]{3}\s?L`)
 	tut, _ := regexp.Compile(`^[A-Z]{3}[0-9]{3}\s?T`)
@@ -123,6 +128,10 @@ func GetTableData(sheet string, class int, f *excelize.File) [][]Data {
 					maxIter := 35 //to prevent infinite loop
 					for tcell == "" && maxIter > 0 {
 						tclass--
+						// Ensure tclass doesn't go below 1
+						if tclass < 1 {
+							break
+						}
 						col, err := excelize.ColumnNumberToName(tclass)
 						HandleError(err)
 						cellId := fmt.Sprintf("%s%d", col, i+j)
