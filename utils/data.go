@@ -50,12 +50,15 @@ func (d *Data) Append(cell string, regex *Regexs) {
 	lres := regex.Lecture.MatchString(cell)
 	tres := regex.Tut.MatchString(cell)
 	eres := regex.Elective.MatchString(cell)
+	pres := regex.Practical.MatchString(cell)
 	if lres {
 		d.Color = "danger"
 	} else if tres {
 		d.Color = "primary"
 	} else if eres {
 		d.Color = "info"
+	} else if pres {
+		d.Color = "warning"
 	}
 	d.Course += cellbyte
 }
@@ -63,6 +66,7 @@ func (d *Data) Append(cell string, regex *Regexs) {
 type Regexs struct {
 	Lecture  *regexp.Regexp
 	Tut      *regexp.Regexp
+	Practical *regexp.Regexp
 	Elective *regexp.Regexp
 	Sub      *regexp.Regexp
 }
@@ -76,10 +80,11 @@ func GetTableData(sheet string, class int, f *excelize.File) [][]Data {
 	// regexs
 	lecture, _ := regexp.Compile(`^[A-Z]{3}[0-9]{3}\s?L`)
 	tut, _ := regexp.Compile(`^[A-Z]{3}[0-9]{3}\s?T`)
+	practical, _ := regexp.Compile(`^[A-Z]{3}[0-9]{3}\s?P`)
 	elective, _ := regexp.Compile(`^([A-Z]{3}[0-9]{3}(\/[A-Z]{3}[0-9]{3})+)\s?L`)
 	subSelect, _ := regexp.Compile(`[A-Z]{3}[0-9]{3}\s?[L,T,P]?`)
 
-	regex := Regexs{lecture, tut, elective, subSelect}
+	regex := Regexs{lecture, tut, practical, elective, subSelect}
 	timings := [][]Data{}
 	freeTime := Data{Course: "", Color: "success"}
 	var Days []Data
