@@ -143,8 +143,8 @@
       </a>
     </header>
     <div class="container">
-      <h3 style="text-align: center; margin: 2rem 0" class="text-success">
-        Thapar University Time Table
+      <h3 style="text-align: center; margin: 2rem 0" class="text-white">
+        Thapar University <br>Time Table</br>
       </h3>
       <div
       id="custom-card"
@@ -157,8 +157,12 @@
           align-items: center;
           text-align: center;
           margin: 0 auto;
-          background-color: #222222;
-          border: 0px;
+           background: rgba(0, 123, 255, 0.15);
+         backdrop-filter: blur(12px);
+           -webkit-backdrop-filter: blur(12px);
+           border: 1px solid rgba(255, 255, 255, 0.3);
+         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+         border-radius: 30px;
         "
       >
         <form id="form">
@@ -200,18 +204,25 @@
             type="submit"
             value="Get Schedule"
             class="btn btn-primary"
-            style="margin-right: 1rem"
+            style="background: rgba(0, 123, 255, 0.15); 
+       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);color: white;border-radius: 30px;"
           />
         </form>
-        <button class="btn btn-outline-secondary text-light save">
+        <button style="background: rgba(0, 123, 255, 0.15); 
+       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);color: white;border-radius: 30px;" class="btn btn-outline-secondary text-light save">
           Save Class
         </button>
       </div>
        <a class="btn secondary text-light text-decoration-underline" href="/course">
           Add course name 
        </a>
+       <a class="btn secondary text-light text-decoration-underline" href="/electives">Add electives</a>
       <!-- remove the alert later on -->
-      <div class="alert alert-success m-3" role="alert">Time Table for 2024-25 (EVEN SEM) is updated now!! <br> New Features: Save as png or pdf added. <br> Found a bug or incorrect info? Open an issue on GitHub! </div>
+      <div style=" background: rgba(0, 123, 255, 0.15); 
+       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);color: white;border-radius: 30px;" class="alert alert-success m-3" role="alert">Time Table for 2025-26 (ODD SEM) is updated now!! <br> New Features: Save as png or pdf added. <br> Found a bug or incorrect info? Open an issue on GitHub! </div>
         <div class="saved-urls container mb-4">
           <p class="text-lg" style="text-align: center; text-decoration: underline;">Saved Timetables</p>
           <ul class="saved-list bg-dark list-group"></ul>
@@ -231,12 +242,12 @@
         >
         <!-- <a href="https://utkarssh.tech" class="badge badge-dark">Website</a> -->
       </p>
-      </p>
+      <!-- </p>
       <p style="text-align: center;" class="text-warning">
         Project contributors
       </p>
       <ul id="contributors-list" class="contributors-list"></ul>
-      </p>
+      </p> -->
     </footer>
     <script>
       async function fetchContributors() {
