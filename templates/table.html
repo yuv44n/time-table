@@ -23,7 +23,7 @@
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      body {
+            body {
         background: #1A1C1F;
         background-image: 
           linear-gradient(to right, #ffffff20 1px, transparent 1px),
@@ -81,52 +81,52 @@
         color: #CFDDF7 !important;
       }
 
-      /* Timetable container */
       .table-responsive {
         padding: 2%;
-        max-width: 100%;
+        width: 100%;
         border-radius: 16px;
-        overflow-x: auto;
+        overflow-x: hidden; 
       }
 
-      /* Table styling */
       .table {
         border-collapse: separate;
         border-spacing: 10px;
         background: transparent;
-        width: 100%;
-        table-layout: fixed;
+        width: 100%;           
+        min-width: unset;     
+        table-layout: fixed;   
       }
 
       .table td {
         border: none;
         border-radius: 12px;
-        padding: 12px;
-        font-size: clamp(0.6rem, 1.5vw, 0.95rem);
+        padding: 8px;
         font-weight: 500;
         text-align: center;
         color: #f1f1f1;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         vertical-align: middle;
-        height: 100%;
+        height: 80px;       
+        max-height: 80px;  
+        overflow: hidden;     
       }
 
+      /* Inner content */
       .table td div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60px;
-      padding: 5px;
-      word-break: break-word;
-      overflow-wrap: anywhere;
-      white-space: normal;    
-      max-width: 100%;
-      text-align: center;
-      font-size: clamp(0.55rem, 1.2vw, 0.85rem);  /* auto shrink on small screens */
-      line-height: 1.2;
-    }
-
+        font-size: clamp(0.45rem, 0.9vw, 0.85rem); 
+        line-height: 1.1;
+        word-break: break-word;
+        height: 100%;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;     /* max 4 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        padding: 2px;
+      }
 
       .table td:hover {
         transform: scale(1.03);
@@ -164,7 +164,18 @@
       }
 
       .bg-dark { background: #24272c !important; }
-      .bg-info { background: linear-gradient(135deg, #00c6ff, #0072ff) !important; }
+      .bg-info {
+        background: rgba(255, 145, 0, 0.2) !important;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        box-shadow: 0 4px 12px rgba(255, 145, 0, 0.25);
+      }
+
+      .table-responsive {
+        width: 100%;
+        overflow-x: auto;   
+        -webkit-overflow-scrolling: touch; 
+      }
 
       /* Footer */
       footer {
@@ -178,48 +189,33 @@
       footer a:hover { text-decoration: underline; }
 
       /* responsive contributors images  */
-     footer p img {
-      max-width: 90%;      
-      height: auto;        
-      display: block;      
-      margin: 0 auto;      
-    }
+      footer p img {
+        max-width: 90%;      
+        height: auto;        
+        display: block;      
+        margin: 0 auto;      
+      }
 
-       /* ultra-small screens  */
       @media (max-width: 400px) {
         footer p img {
           max-width: 100%;   
         }
       }
 
-
       @media (max-width: 600px) {
-      .table td div {
-        font-size: 0.5rem;   
-        padding: 3px;
-        line-height: 1.1;
+        .table td div {
+          font-size: 0.55rem;   
+          padding: 2px;
+          line-height: 1.1;
         }
       }
 
       @media (max-width: 400px) {
         .table td div {
-          font-size: 0.35rem;
+          font-size: 0.4rem;
           line-height: 1.05;
         }
       }
-
-            /* for ultra-small screens  */
-      @media (max-width: 400px) {
-        .table td {
-          padding: 6px 4px; 
-        }
-        .table td div {
-          font-size: 0.4rem; 
-          word-break: break-word; 
-          line-height: 1.05;
-        }
-      }
-
 
       @media print {
         body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
@@ -234,6 +230,7 @@
         header { display: none; }
         footer { max-height: 100px; }
       }
+
     </style>
   </head>
 
@@ -251,26 +248,28 @@
       <button id="saveAsPng" class="btn btn-primary">Save as PNG</button>
       <button id="printPdf" class="btn btn-success">Print to PDF</button>
     </div>
-
-    <table class="table table-dark table-hover" id="table">
-      {{range $rowIndex, $row := .Data}}
-      <tr>
-        {{range $colIndex, $cell := $row}}
-          {{if eq $cell.Color "dark"}}
-            {{if eq $rowIndex 0}}
-              <td class="header-day"><div>{{$cell.Course}}</div></td>
-            {{else if eq $colIndex 0}}
-              <td class="header-time"><div>{{$cell.Course}}</div></td>
+    
+    <div class="table-responsive">
+      <table class="table table-dark table-hover" id="table">
+        {{range $rowIndex, $row := .Data}}
+        <tr>
+          {{range $colIndex, $cell := $row}}
+            {{if eq $cell.Color "dark"}}
+              {{if eq $rowIndex 0}}
+                <td class="header-day"><div>{{$cell.Course}}</div></td>
+              {{else if eq $colIndex 0}}
+                <td class="header-time"><div>{{$cell.Course}}</div></td>
+              {{else}}
+                <td class="bg-dark empty"><div>{{$cell.Course}}</div></td>
+              {{end}}
             {{else}}
-              <td class="bg-dark empty"><div>{{$cell.Course}}</div></td>
+              <td class="bg-{{$cell.Color}}"><div>{{$cell.Course}}</div></td>
             {{end}}
-          {{else}}
-            <td class="bg-{{$cell.Color}}"><div>{{$cell.Course}}</div></td>
           {{end}}
+        </tr>
         {{end}}
-      </tr>
-      {{end}}
-    </table>
+      </table>
+    </div>
 
     <footer class="footer mt-2 mb-2 pb-2 pt-2 bg-dark">
       <p style="text-align: center" class="text-danger">
@@ -285,19 +284,20 @@
         </a>
       </p>
     </footer>
-
+    
+    <script src="https://unpkg.com/html-to-image"></script>
     <script>
     document.getElementById("saveAsPng").addEventListener("click", function () {
-      const timetableElement = document.getElementById("table"); // fixed id
-      html2canvas(timetableElement, { backgroundColor: "#000" }) // better visibility
-        .then((canvas) => {
+      const node = document.getElementById("table");
+      htmlToImage.toPng(node)
+        .then(function (dataUrl) {
           const link = document.createElement("a");
-          link.download = "timetable.png";
-          link.href = canvas.toDataURL("image/png");
+          link.download = 'timetable.png';
+          link.href = dataUrl;
           link.click();
         })
-        .catch((error) => {
-          console.error("Error saving PNG:", error);
+        .catch(function (error) {
+          console.error('Error generating image:', error);
         });
     });
 
